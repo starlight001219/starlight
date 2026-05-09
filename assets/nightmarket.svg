@@ -1,4 +1,4 @@
-﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" data-hidden="V2hhdCBpcyB0aGUgZm9ydGhzZWNvbmQgbGV0dGVyPw==">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#070b14"/>
@@ -7,15 +7,38 @@
     </linearGradient>
   </defs>
   <rect width="1200" height="800" fill="url(#sky)"/>
+
+  <!-- CAFE 招牌 -->
   <rect x="90" y="520" width="260" height="160" rx="18" fill="#111827" stroke="#1f2937"/>
   <rect x="140" y="530" width="100" height="34" rx="10" fill="#111827" stroke="#334155"/>
   <text x="190" y="556" fill="#e5e7eb" font-size="18" text-anchor="middle" font-family="ui-sans-serif,system-ui">CAFE</text>
+
+  <!-- STARLIGHT 主舞台 -->
   <rect x="360" y="500" width="320" height="180" rx="18" fill="#0f172a" stroke="#1f2937"/>
   <text x="520" y="604" fill="#67e8f9" font-size="32" text-anchor="middle" font-family="ui-sans-serif,system-ui">STARLIGHT</text>
   <text x="520" y="640" fill="#94a3b8" font-size="14" text-anchor="middle" font-family="ui-sans-serif,system-ui">night market</text>
+
+  <!-- BOOKS 书店 -->
   <rect x="720" y="540" width="220" height="140" rx="18" fill="#111827" stroke="#1f2937"/>
   <rect x="780" y="560" width="100" height="28" rx="8" fill="#111827" stroke="#334155"/>
   <text x="830" y="580" fill="#fde68a" font-size="14" text-anchor="middle" font-family="ui-sans-serif,system-ui">BOOKS</text>
+
+  <!-- 你懂的彩蛋文字 -->
+  <text x="520" y="530" fill="rgba(148,163,184,0.03)" font-size="10" text-anchor="middle" font-family="ui-sans-serif,system-ui">你懂的</text>
+
+  <!-- doge 表情 -->
+  <g id="doge" transform="translate(1060,140)">
+    <circle cx="0" cy="0" r="22" fill="#fbbf24" stroke="#f59e0b" stroke-width="2"/>
+    <circle cx="-7" cy="-5" r="4" fill="#1c1917"/>
+    <circle cx="7" cy="-5" r="4" fill="#1c1917"/>
+    <ellipse cx="0" cy="6" rx="8" ry="5" fill="#fcd34d"/>
+    <text x="0" y="42" fill="#fde68a" font-size="10" text-anchor="middle" font-family="ui-sans-serif,system-ui">wow much flag</text>
+  </g>
+
+  <!-- 520/1314 坐标梗小标记 -->
+  <circle cx="520" cy="1314" r="0" fill="none" data-meaning="only_lovers_understand"/>
+
+  <!-- 星星 -->
   <circle cx="180" cy="140" r="6" fill="#f5f3ff"/>
   <circle cx="260" cy="90" r="3" fill="#f5f3ff"/>
   <circle cx="420" cy="120" r="5" fill="#67e8f9"/>
@@ -23,7 +46,17 @@
   <circle cx="800" cy="110" r="6" fill="#f5f3ff"/>
   <circle cx="950" cy="85" r="3" fill="#67e8f9"/>
   <circle cx="1060" cy="140" r="5" fill="#f5f3ff"/>
+  <circle cx="130" cy="200" r="2" fill="#f5f3ff"/>
+  <circle cx="340" cy="180" r="2" fill="#f5f3ff"/>
+  <circle cx="540" cy="160" r="2" fill="#f5f3ff"/>
+  <circle cx="740" cy="190" r="2" fill="#f5f3ff"/>
+  <circle cx="1020" cy="200" r="2" fill="#f5f3ff"/>
+
   <rect x="0" y="700" width="1200" height="100" fill="#070b14"/>
+
+  <!-- 坐标注释 -->
   <!-- banner_anchors: [190,556], [520,604], [830,580] -->
   <!-- hint: the shop order is 1 -> 2 -> 3; read banner text in that order -->
+  <!-- hidden_joke: id="doge" is not a decoration, it is a witness -->
+  <!-- data-hidden 属性里藏着一句 Base64 的灵魂拷问 -->
 </svg>
