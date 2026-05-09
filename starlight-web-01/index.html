@@ -13,14 +13,14 @@
     <header class="card hero">
       <h1><span>夜空航标灯</span></h1>
       <p>有人说，网页最诚实的地方不是正文，而是注释。但别高兴太早，这里有一个经典的都市传说：真正的 Flag，藏在你按下 <code>F12</code> 时屏幕闪烁的那一秒里。别真的信，就跟你看到「你中奖了」的弹窗一样。</p>
-      <div class="chips"><span class="chip">注释</span><span class="chip">Console</span><span class="chip">隐藏元素</span><span class="chip">假捷径</span></div>
+      <div class="chips"><span class="chip">注释</span><span class="chip">Console</span><span class="chip">隐藏元素</span><span class="chip">诱导</span></div>
     </header>
 
     <section class="row" style="margin-top:22px">
       <article class="card section">
         <h2>任务</h2>
         <p>找到当前页面隐藏的正确 flag 并提交。提醒一句：页面正文像是在给你答案，而源码和控制台正在互相甩锅。</p>
-        <div class="hint">提示：真正的 flag 不会羞涩地写在正文里，它更喜欢在你按 <code>F12</code> 以后悄悄说话。输入 <code>starlight{help}</code> 可以使用复活币。</div>
+        <div class="hint">提示：真正的 flag 不会羞涩地写在正文里，它更喜欢在你按 <code>F12</code> 以后悄悄说话。输入 <code>starlight{help}</code> 可以使用复活币，但代价是承认自己菜。</div>
       </article>
       <article class="card section">
         <h2>提交 flag</h2>
@@ -29,7 +29,7 @@
           <input id="web-flag" class="input" placeholder="starlight{...} 或 zwh{...}" />
           <div class="actions"><button class="btn primary" type="submit">验证</button></div>
         </form>
-        <div id="web-result" class="result muted">如果你已经看了三遍注释还没找到，说明你还没被出题人骗够。</div>
+        <div id="web-result" class="result muted">答案在站点里，但不在你刚才看的地方。</div>
       </article>
     </section>
 
@@ -38,39 +38,34 @@
       <ul>
         <li>这题不靠后端，靠你打开 DevTools 的勇气。</li>
         <li>如果你只看页面正文，那你已经输掉一半了。</li>
-        <li>如果页面像是在告诉你答案，那它八成在骗你。</li>
+        <li>页面里有很多看起来很像答案的东西，但真正有用的只有一处。</li>
       </ul>
     </section>
 
     <div id="developer-theater" style="display:none">恭喜你翻到了开发者剧场。这里不直接给答案，但可以告诉你：答案一直离你很近，只是页面在假装不认识它。</div>
-    <!-- 假提示：答案是 starlight{debug_is_not_a_personality_trait}，快去试试啊 -->
     <!-- 别急，看看控制台里的 console.table() 也许有惊喜 -->
-    <!-- 如果你能看到这句注释，证明你很有耐心。其实真正的 flag 不是 starlight{...}，而是你心中想要的那个答案。但是，为了完成出题人的恶趣味，请去第二关的 SVG 里找找“你懂的”这三个字。 -->
+    <!-- 如果你能看到这句注释，证明你很有耐心。请去第二关的 SVG 里找找“你懂的”这三个字。 -->
     <div class="footer">STARLIGHT CTF · WEB</div>
   </div>
   <script src="../assets/utils.js"></script>
   <script>
     (() => {
       const real = 'starlight{view-source_the_truth_was_in_console_all_along}';
-      const honey1 = 'starlight{debug_is_not_a_personality_trait}';
-      const honey2 = 'zwh{you_took_the_bait_so_smoothly}';
       console.log('%cSTARLIGHT DEBUG', 'color:#67e8f9;font-weight:700;font-size:16px');
       console.log('工程师说：调试接口已经关了。');
       console.log('但他没说 console 也关了。');
       console.log('真正 flag:', real);
-      console.log('蜜罐 A:', honey1);
-      console.log('蜜罐 B:', honey2);
       const trap = document.createElement('input');
       trap.type = 'hidden'; trap.name = 'starlight-devtools-hint';
-      trap.value = 'flag=' + real + ' | honey=' + honey1;
+      trap.value = 'flag=' + real;
       document.body.appendChild(trap);
     })();
   </script>
   <script>
     bindForm({formId:'web-form',inputId:'web-flag',resultId:'web-result',challengeId:'web',tests:[
       {hash:'e4c8ee1c08ada5fd38d5c2c3c5d1d5acaf7abcfbf5d8c42fea583d09fb56d2f3',message:'正确。你没相信页面表面那套说辞，这才是 WEB 出题人最爱的状态。',variant:'ok'},
-      {hash:'d91daa9f7c8e9a35dd239c8bac1593b58db3cec2600b77cb713f72e1b603356a',message:'经典蜜罐。你抓到的是注释里的假货，不是真正答案。',variant:'bad'},
-      {hash:'0b2816eea59e493d1fb58c5aafa36276baff322c7d45f152ca2af612ead59543',message:'第二个蜜罐。恭喜你，被骗得很优雅。',variant:'bad'}
+      {hash:'d91daa9f7c8e9a35dd239c8bac1593b58db3cec2600b77cb713f72e1b603356a',suffix:' 看起来你已经找到了工程师留下的线索。',variant:'bad'},
+      {hash:'0b2816eea59e493d1fb58c5aafa36276baff322c7d45f152ca2af612ead59543',suffix:' 这个答案已被记录到出题人的收藏夹。',variant:'bad'}
     ]});
   </script>
 </body>

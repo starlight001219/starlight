@@ -1,18 +1,19 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>STARLIGHT CTF</title>
   <link rel="stylesheet" href="assets/main.css" />
+  <!-- 真正的 flag 藏在蜜罐里，蜜罐不是陷阱，是碎片容器 -->
 </head>
 <body>
   <div class="wrap">
     <header class="card hero">
       <div class="topbar"><span class="badge">静态可分享</span><span class="tag">flag 格式：starlight{} / zwh{}</span></div>
       <h1><span>STARLIGHT CTF</span></h1>
-      <p>一套可以直接打包分享的 CTF 小站。三道题从 WEB 到 MISC 再到密码学，层层递进。站点里故意埋了几个蜜罐，专门招待冲动型选手。据说有人在第一关就被骗了三次。</p>
-      <div class="chips"><span class="chip">WEB / MISC / Crypto</span><span class="chip">静态分享</span><span class="chip">隐藏蜜罐</span><span class="chip">梗 + 彩蛋 + 嘲讽</span></div>
+      <p>一套可以直接打包分享的 CTF 小站。三道题从 WEB 到 MISC 再到密码学，层层递进。站点里埋了不少蜜罐——但它们不只是陷阱，有些东西藏在你以为是假答案的地方。</p>
+      <div class="chips"><span class="chip">WEB / MISC / Crypto</span><span class="chip">静态分享</span><span class="chip">蜜罐即碎片</span><span class="chip">梗 + 嘲讽 + 彩蛋</span></div>
     </header>
 
     <div class="card progress-wrap">
@@ -24,19 +25,19 @@
       <article class="card section">
         <div class="meta"><span class="badge">WEB</span><span class="tag">第 1 题 · 起步</span></div>
         <h2>夜空航标灯</h2>
-        <p>有人说，网页最诚实的地方不是正文，而是注释。但别高兴太早，真正的 Flag 藏在你按下 F12 时屏幕闪烁的那一秒里。别真的信，就跟你看到你中奖了的弹窗一样。</p>
+        <p>有人说，网页最诚实的地方不是正文，而是注释。但别高兴太早，这里有一个经典的都市传说：真正的 Flag，藏在你按下 F12 时屏幕闪烁的那一秒里。别真的信。</p>
         <div class="actions"><a class="btn primary" href="starlight-web-01/index.html">打开题目</a></div>
       </article>
       <article class="card section">
         <div class="meta"><span class="badge" style="background:rgba(34,197,94,0.16);border-color:rgba(34,197,94,0.4);color:#86efac">MISC</span><span class="tag">第 2 题 · 进阶</span></div>
         <h2>照片会说谎</h2>
-        <p>这张图确实很完整，但重点在于：图里藏了一个狗头表情。它的坐标和颜色，每一个像素都在对你说：来抓我呀！</p>
+        <p>这张 SVG 图确实很完整，但重点在于：图里藏了一个「狗头」表情。它的坐标和颜色，每一个像素都在对你说：来抓我呀！</p>
         <div class="actions"><a class="btn primary" href="starlight-misc-01/index.html">打开题目</a></div>
       </article>
       <article class="card section">
         <div class="meta"><span class="badge" style="background:rgba(250,204,21,0.16);border-color:rgba(250,204,21,0.45);color:#fde68a">CRYPTO</span><span class="tag">第 3 题 · Boss</span></div>
         <h2>密信不会自己开口</h2>
-        <p>这条密信其实是一条加密版的网络黑话。有人说要跑脚本、算密钥，但真相是：你只要在脑海里默念这题有毒三遍，然后去前面的题里找找被人遗忘的话。</p>
+        <p>这条密信是一条加密版的网络黑话。有人说要跑脚本、算密钥，但真相是：你手里的碎片可能比你以为的多。密钥就藏在站点名字里。</p>
         <div class="actions"><a class="btn primary" href="starlight-crypto-01/index.html">打开题目</a></div>
       </article>
     </section>
@@ -46,8 +47,8 @@
       <ul>
         <li>先当选手：不看源码、不看提示，尽量拿到每一题的第一层 flag。</li>
         <li>再当出题人：右键查看源码、读注释、翻隐藏节点，寻找设计陷阱。</li>
-        <li>最后当审计员：检查哪些 flag 是蜜罐，哪些才是真正答案。</li>
-        <li>隐藏彩蛋：在任意题目输入框输入 <code>starlight{help}</code> 试试。</li>
+        <li>最后当审计员：检查哪些 flag 是蜜罐，哪些才是真正答案。注意——蜜罐不只是陷阱。</li>
+        <li>隐藏彩蛋：在任意题目输入框输入 <code>starlight{help}</code> 试试，代价是承认自己菜。</li>
       </ul>
     </section>
     <section class="card section">
@@ -56,7 +57,8 @@
         <li>直接把整个目录压缩分享即可，不需要服务器。</li>
         <li>若要线上办赛，可直接部署到 GitHub Pages / Vercel / Netlify。</li>
         <li>每道题页面都提供提交 flag 入口，方便现场核验。</li>
-        <li>这三道题不是孤岛，它们之间有隐藏的线索传递。回溯是一种美德。</li>
+        <li>这三道题不是孤岛，它们之间有隐藏的线索传递。蜜罐里藏着碎片，碎片里藏着真相。回溯是一种美德。</li>
+        <li>最后一关的 flag 被打散成了三段，分散在站点各处。密钥就是站点的名字。</li>
       </ul>
     </section>
     <div class="footer">STARLIGHT CTF · 静态分享版 · WEB + MISC + Crypto</div>

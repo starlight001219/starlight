@@ -12,7 +12,7 @@
     <header class="card hero">
       <h1><span>照片会说谎</span></h1>
       <p>这张 SVG 图确实很完整，但重点在于：图里藏了一个「狗头」表情。它的坐标和颜色，每一个像素都在对你说：「来抓我呀！」。</p>
-      <div class="chips"><span class="chip">SVG 源码</span><span class="chip">坐标梗</span><span class="chip">隐藏注释</span><span class="chip">data-hidden</span></div>
+      <div class="chips"><span class="chip">SVG 源码</span><span class="chip">坐标</span><span class="chip">隐藏属性</span><span class="chip">顺序推理</span></div>
     </header>
 
     <section class="row" style="margin-top:22px">
@@ -29,7 +29,7 @@
           <input id="misc-flag" class="input" placeholder="starlight{...} 或 zwh{...}" />
           <div class="actions"><button class="btn primary" type="submit">验证</button></div>
         </form>
-        <div id="misc-result" class="result muted">图片不会说话，但它的源码会。而且它说的话比你想象的更毒。</div>
+        <div id="misc-result" class="result muted">图片不会说话，但它的源码会。</div>
         <div class="hint">提示：不要只盯着画面看。SVG 既能画图，也能留注释；而注释最爱讲顺序和坐标。而且 SVG 里那个 id="doge" 的元素，看起来不像正经图形。</div>
         <div class="secret-note" style="margin-top:12px">参赛笔记：
 - 有人说答案藏在 CAFE 里；
@@ -53,14 +53,13 @@
       <p class="small">表格是公开的，顺序可不是。而且 B 的纵坐标换了，只有懂的人才懂。</p>
     </section>
 
-    <!-- 假线索：答案就是 starlight{its_never_the_obvious_label}，别再看源码了 -->
     <div class="footer">STARLIGHT CTF · MISC</div>
   </div>
   <script src="../assets/utils.js"></script>
   <script>
     bindForm({formId:'misc-form',inputId:'misc-flag',resultId:'misc-result',challengeId:'misc',tests:[
       {hash:'1994a6507e49721b9f11447f6338d04f6e93f5b7844e8a4d2f66ec0fe93c103e',message:'正确。你没被画面骗到，而是从素材源码里把顺序和文本拼了出来。狗头表情向你致敬。',variant:'ok'},
-      {hash:'074302e34f5d2f7815575a0ef91f9ecac5f5421c511c73675c648b6539cbe45d',message:'这是蜜罐。你抓到了注释里最香的假答案。',variant:'bad'}
+      {hash:'074302e34f5d2f7815575a0ef91f9ecac5f5421c511c73675c648b6539cbe45d',suffix:' 线索已归档，感谢你的贡献。',variant:'bad'}
     ]});
   </script>
 </body>

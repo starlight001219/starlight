@@ -11,47 +11,59 @@
     <div class="topbar"><a class="link" href="../index.html">返回总入口</a><span class="badge" style="background:rgba(250,204,21,0.16);border-color:rgba(250,204,21,0.45);color:#fde68a">CRYPTO</span></div>
     <header class="card hero">
       <h1><span>密信不会自己开口</span></h1>
-      <p>这条密信其实是一条加密版的「网络黑话」。有人说要跑脚本、算密钥，但真相是：你只要在脑海里默念「这题有毒」三遍，然后去前面的题里找找被人遗忘的话，就是真正的 Key。</p>
-      <div class="chips"><span class="chip">Base64</span><span class="chip">跨题联动</span><span class="chip">假捷径</span><span class="chip">土味情话</span></div>
+      <p>这条密信是一条加密版的网络黑话。有人说要跑脚本、算密钥，但真相是：你只要在脑海里默念这题有毒三遍，然后去前面的题里找找被人遗忘的话。而且，你手里的碎片可能比你以为的多。</p>
+      <div class="chips"><span class="chip">Base64</span><span class="chip">跨题碎片</span><span class="chip">星芒密钥</span><span class="chip">伪装成功</span></div>
     </header>
 
     <section class="row" style="margin-top:22px">
       <article class="card section">
         <h2>密文</h2>
         <pre id="cipher-blob">U2FsdGVkX19Zb3VyU2VjcmV0UGhyYXNlCg==</pre>
-        <p class="muted">提示：这段看起来像 Base64，但它还不是终点。有人说解出来就是答案，但出题人笑了。</p>
-        <div class="hint">题外话：有人觉得好密码要用奇怪算法；但现实里，更多人只是把同一句话藏了两次。而且，真正的 Key 不在这一关里。</div>
+        <p class="muted">提示：这段看起来像 Base64，但它还不是终点。解码后你会发现一个关键词，它不是 flag 本身，而是通往真相的引子。</p>
         <div class="secret-note" style="margin-top:12px">// 裁判侧记：
-// 真正的口令不会出现在这个页面里。
-// 它藏在更前面的题里，而且藏得非常嚣张。
-// 如果你能回到第一关，翻到最下面的注释，也许就懂了。</div>
+// 碎片 A：edebc9edd9ded3dcdddfd5dad7dec8
+// 碎片 B：d6e6dae2e0d8c6cae9e7d3d4d3d9ce
+// 碎片 C：d2dcd6dfcdd7c6d4d5ededc0ddd1e2e4
+// 密钥：starlight
+// 拼接顺序在前三题的蜜罐里。
+// 解密方法：Vigenere 反向偏移。</div>
       </article>
       <article class="card section">
-        <h2>提交 flag</h2>
+        <h2>提交最终 flag</h2>
         <form id="crypto-form" class="field">
-          <label for="crypto-flag">输入最后得到的 flag</label>
-          <input id="crypto-flag" class="input" placeholder="starlight{...} 或 zwh{...}" />
-          <div class="actions"><button class="btn primary" type="submit">验证</button></div>
+          <label for="crypto-flag">输入解密后的完整 flag</label>
+          <input id="crypto-flag" class="input" placeholder="zwh{...}" />
+          <div class="actions">
+            <button class="btn primary" type="submit">验证</button>
+            <button class="btn ok" type="button" id="decrypt-btn">碎片解密器</button>
+          </div>
         </form>
-        <div id="crypto-result" class="result muted">这里不接受「我感觉答案是对的」。但接受「我从头到尾做了一遍」。</div>
-        <div class="secret-note" style="margin-top:12px">如果你输入了一段土味情话，页面可能会害羞。</div>
+        <div id="crypto-result" class="result muted">这里不接受我感觉答案是对的。但接受我从头到尾做了一遍。</div>
+        <div id="decrypt-panel" style="display:none;margin-top:12px" class="card section">
+          <h3>碎片解密器</h3>
+          <p class="small">输入你从蜜罐里收集到的 hex 碎片（不含空格），用 starlight 密钥解密。</p>
+          <form id="decrypt-form" class="field">
+            <label for="decrypt-input">hex 碎片</label>
+            <input id="decrypt-input" class="input" placeholder="edebc9edd9ded3dc..." />
+            <div class="actions"><button class="btn primary" type="submit">解密</button></div>
+          </form>
+          <div id="decrypt-result" class="result muted">输入碎片，点击解密。</div>
+        </div>
       </article>
     </section>
 
     <section class="card section">
-      <h3>答题流程</h3>
+      <h3>碎片收集指南</h3>
       <ol>
-        <li>先解编码层，理解这段密文的原始形态。</li>
-        <li>不要急着提交解码结果，那只是口令提示，不是 flag。</li>
-        <li>回到第一关和第二关，翻翻注释和 SVG，找到跨题线索。</li>
-        <li>如果有人告诉你「直接提交这段话就能过」，那个人大概率是出题人放的烟雾弹。</li>
+        <li>你可能已经在前两题里收集到了碎片，只是没意识到它们是碎片。</li>
+        <li>真正的 flag 被打散成了三段密文，分散在站点各处的蜜罐里。</li>
+        <li>密钥是站点的名字：starlight。用 Vigenere 反向偏移即可解密。</li>
+        <li>把三段解密结果按顺序拼起来，就是最终 flag。</li>
       </ol>
-      <p class="small">第三题不是独立关卡，它和前面两题之间存在一个贯穿线索。回溯是一种美德。</p>
+      <p class="small">如果你手里的碎片不够，回去翻翻前两题的蜜罐和注释。蜜罐不只是陷阱，它还是碎片容器。</p>
     </section>
 
     <div id="fastlane" style="display:none">看起来你发现了快速通道。但快速通道之所以快，是因为它能更快送你掉坑。</div>
-    <!-- 假捷径 -->
-    <!-- 真正的口令就是 starlight{shortcut_was_a_trap_with_good_lighting}，直接提交就能过 -->
     <div class="footer">STARLIGHT CTF · CRYPTO</div>
   </div>
   <script src="../assets/utils.js"></script>
@@ -61,14 +73,35 @@
     if (fastlane) fastlane.setAttribute('data-hint', 'try:' + honeyPass);
     console.log('%cSTARLIGHT CRYPTO', 'color:#facc15;font-weight:700;font-size:16px');
     console.log('密文:', document.getElementById('cipher-blob').textContent.trim());
-    console.log('有人把口令贴在了 HTML 注释里，看上去很合理。');
-    console.log('但合理这件事，在 CTF 里通常就是陷阱。');
-    console.log('提示：回到第一关，看看最后那条 HTML 注释说了什么。');
-  </script>
-  <script>
+    console.log('碎片散落在蜜罐里，密钥是站点名。');
+    console.log('蜜罐 A hex 片段:', 'edebc9edd9ded3dcdddfd5dad7dec8');
+    console.log('蜜罐 B hex 片段:', 'd6e6dae2e0d8c6cae9e7d3d4d3d9ce');
+    console.log('蜜罐 C hex 片段:', 'd2dcd6dfcdd7c6d4d5ededc0ddd1e2e4');
+
+    document.getElementById('decrypt-btn').addEventListener('click', () => {
+      const panel = document.getElementById('decrypt-panel');
+      panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+    });
+
+    document.getElementById('decrypt-form').addEventListener('submit', e => {
+      e.preventDefault();
+      const hex = document.getElementById('decrypt-input').value.trim();
+      const result = document.getElementById('decrypt-result');
+      if (!hex) { result.textContent = '请输入 hex 碎片。'; result.className = 'result muted'; return; }
+      try {
+        const decoded = vigenereDecrypt(hex, 'starlight');
+        if (decoded.startsWith('zwh{') || decoded.startsWith('starlight{')) {
+          result.textContent = '碎片解密成功: ' + decoded; result.className = 'result ok';
+          toast('碎片解密完成！把三段拼起来就是最终 flag。', 'ok', 4000);
+        } else {
+          result.textContent = '解密结果: ' + decoded + ' （看起来不像 flag 片段，请检查碎片是否正确）'; result.className = 'result muted';
+        }
+      } catch(err) { result.textContent = '解密失败，hex 格式可能有误。'; result.className = 'result bad'; }
+    });
+
     bindForm({formId:'crypto-form',inputId:'crypto-flag',resultId:'crypto-result',challengeId:'crypto',tests:[
-      {hash:'b91ed81720bc97ca88acd63ff8c59a6b9401f5d7e851294604daf77eaeabc4b2',message:'正确。你没被「捷径」骗走，而是把整条链路走通了。三道题的线索终于在你手里合龙了。',variant:'ok'},
-      {hash:'40237587ed6c15112d79e3eaa39a2480c2f6247f35673046a81bbab0a46e68ff',message:'这是蜜罐。你把出题人留的假口令当成答案了。注释里的「捷径」从来不通往正确答案。',variant:'bad'}
+      {hash:'b91ed81720bc97ca88acd63ff8c59a6b9401f5d7e851294604daf77eaeabc4b2',message:'正确。你没被捷径骗走，而是把整条链路走通了。三道题的碎片终于在你手里合龙了。',variant:'ok'},
+      {hash:'40237587ed6c15112d79e3eaa39a2480c2f6247f35673046a81bbab0a46e68ff',suffix:' 这个口令我们收到了，已归档。',variant:'bad'}
     ]});
   </script>
 </body>
