@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STARLIGHT CTF · 夜空航标灯</title>
+  <link rel="stylesheet" href="../assets/main.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar"><a class="link" href="../index.html">返回总入口</a><span class="badge">WEB</span></div>
+    <header class="card hero">
+      <h1><span>夜空航标灯</span></h1>
+      <p>站点工程师说：页面已经上线了，调试信息也都藏好了。但工程师的藏好和选手的找到，往往只差一次 View Source。</p>
+      <div class="chips"><span class="chip">信息收集</span><span class="chip">源码</span><span class="chip">隐藏接口</span></div>
+    </header>
+
+    <section class="row" style="margin-top:22px">
+      <article class="card section">
+        <h2>任务</h2>
+        <p>找到当前页面隐藏的正确 flag，并把它提交到右侧验证区。提示：页面设计师把最重要的东西藏在了看不见的地方。</p>
+        <div class="hint">如果你只盯着界面看，那你已经输掉一半了。</div>
+      </article>
+      <article class="card section">
+        <h2>提交 flag</h2>
+        <form id="web-form" class="field">
+          <label for="web-flag">输入你找到的 flag</label>
+          <input id="web-flag" class="input" placeholder="starlight{...} 或 zwh{...}" />
+          <div class="actions"><button class="btn primary" type="submit">验证</button></div>
+        </form>
+        <div id="web-result" class="result muted">答案不长，但会很扎心。</div>
+      </article>
+    </section>
+
+    <section class="card section">
+      <h3>公开备注 <span class="small">（出题人故意让你看到）</span></h3>
+      <ul>
+        <li>本题不依赖后端，也不依赖奇怪的第三方库。</li>
+        <li>如果你找不到答案，大概率是因为你太相信界面本身了。</li>
+        <li>看起来很完整的提示不一定等于真提示。</li>
+      </ul>
+    </section>
+
+    <div id="developer-theater" style="display:none"><p>恭喜你翻到了开发者剧场。这里不会直接给你答案，但会告诉你：答案已经离你很近了，而且页面本身就在撒一个善意的小谎。</p></div>
+    <div class="footer">STARLIGHT CTF · WEB</div>
+  </div>
+
+  <script>
+    (() => {
+      const thisPageFlag = 'starlight{view-source_the_truth_was_in_console_all_along}';
+      const honey1 = 'starlight{debug_is_not_a_personality_trait}';
+      const honey2 = 'zwh{you_took_the_bait_so_smoothly}';
+      console.log('%cSTARLIGHT DEBUG', 'color:#67e8f9;font-weight:700;font-size:16px');
+      console.log('工程师说：调试接口已经关了。');
+      console.log('但他没说 console 也关了。');
+      console.log('真正 flag:', thisPageFlag);
+      console.log('蜜罐 A:', honey1);
+      console.log('蜜罐 B:', honey2);
+      console.log('如果你先拿了蜜罐，只能说你比答案更勇敢。');
+      const trap = document.createElement('input');
+      trap.type = 'hidden';
+      trap.name = 'starlight-devtools-hint';
+      trap.value = 'flag=' + thisPageFlag + ' | honey=' + honey1;
+      document.body.appendChild(trap);
+    })();
+  </script>
+  <!-- 假提示：答案是 starlight{debug_is_not_a_personality_trait}，快去试试啊 -->
+  <script src="../assets/utils.js"></script>
+  <script>
+    bindForm({formId:'web-form',inputId:'web-flag',resultId:'web-result',tests:[
+      {hash:'e4c8ee1c08ada5fd38d5c2c3c5d1d5acaf7abcfbf5d8c42fea583d09fb56d2f3',message:'正确。你没有相信页面表面那套说辞，这才是 WEB 出题人最爱看到的状态。',variant:'ok'},
+      {hash:'d91daa9f7c8e9a35dd239c8bac1593b58db3cec2600b77cb713f72e1b603356a',message:'经典蜜罐。你抓到的是注释里的假货，不是真正的答案。',variant:'bad'},
+      {hash:'0b2816eea59e493d1fb58c5aafa36276baff322c7d45f152ca2af612ead59543',message:'第二个蜜罐。恭喜你，被骗得很优雅。',variant:'bad'}
+    ]});
+  </script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STARLIGHT CTF</title>
+  <link rel="stylesheet" href="assets/main.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header class="card hero">
+      <div class="topbar"><span class="badge">静态可分享</span><span class="tag">flag 格式：starlight{} / zwh{}</span></div>
+      <h1><span>STARLIGHT CTF</span></h1>
+      <p>这是一套可以直接打包分享的小型 CTF 站点。三道题目从 WEB 到 MISC 再到密码学，层层递进。站点里故意埋了几个看起来特别像正确答案的蜜罐，专门招待冲动型选手。</p>
+      <div class="chips"><span class="chip">WEB / MISC / Crypto</span><span class="chip">静态分享</span><span class="chip">隐藏蜜罐</span><span class="chip">解谜 + 小彩蛋</span></div>
+    </header>
+
+    <section class="row" style="margin-top:22px">
+      <article class="card section">
+        <div class="meta"><span class="badge">WEB</span><span class="tag">第 1 题 · 起步</span></div>
+        <h2>夜空航标灯</h2>
+        <p>有人说，网页最诚实的部分不是正文，而是它不好意思展示的注释、隐藏状态和调试端点。你以为主页在炫耀星图，其实答案一直在后台喊你。</p>
+        <div class="actions"><a class="btn primary" href="starlight-web-01/index.html">打开题目</a></div>
+      </article>
+      <article class="card section">
+        <div class="meta"><span class="badge" style="background:rgba(34,197,94,0.16);border-color:rgba(34,197,94,0.4);color:#86efac">MISC</span><span class="tag">第 2 题 · 进阶</span></div>
+        <h2>照片会说谎</h2>
+        <p>这张图看起来很正常，直到你意识到：真正危险的不是照片本身，而是拍照的人忘记擦掉的背景信息、边角细节和时间线。</p>
+        <div class="actions"><a class="btn primary" href="starlight-misc-01/index.html">打开题目</a></div>
+      </article>
+      <article class="card section">
+        <div class="meta"><span class="badge" style="background:rgba(250,204,21,0.16);border-color:rgba(250,204,21,0.45);color:#fde68a">CRYPTO</span><span class="tag">第 3 题 · Boss</span></div>
+        <h2>密信不会自己开口</h2>
+        <p>一条消息被加密了一次不够，又多贴了一层防护。最骚的是，作者还故意给你留了一条捷径。如果你先去找捷径，恭喜，直接掉坑。</p>
+        <div class="actions"><a class="btn primary" href="starlight-crypto-01/index.html">打开题目</a></div>
+      </article>
+    </section>
+
+    <section class="card section">
+      <h3>站点怎么玩</h3>
+      <ul>
+        <li>先当选手：不看源码、不看提示，尽量拿到每一题的第一层 flag。</li>
+        <li>再当出题人：右键查看源码、读注释、翻隐藏节点，寻找设计陷阱。</li>
+        <li>最后当审计员：检查哪些 flag 是蜜罐，哪些才是真正答案。</li>
+      </ul>
+    </section>
+    <section class="card section">
+      <h3>出题人提示</h3>
+      <ul>
+        <li>直接把整个目录压缩分享即可，不需要服务器。</li>
+        <li>若要线上办赛，可直接部署到 GitHub Pages / Vercel / Netlify。</li>
+        <li>每道题页面都提供提交 flag 入口，方便现场核验。</li>
+      </ul>
+    </section>
+    <div class="footer">STARLIGHT CTF · 静态分享版 · WEB + MISC + Crypto</div>
+  </div>
+</body>
+</html>

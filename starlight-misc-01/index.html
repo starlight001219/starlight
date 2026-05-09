@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STARLIGHT CTF · 照片会说谎</title>
+  <link rel="stylesheet" href="../assets/main.css" />
+</head>
+<body>
+  <div class="wrap">
+    <div class="topbar"><a class="link" href="../index.html">返回总入口</a><span class="badge" style="background:rgba(34,197,94,0.16);border-color:rgba(34,197,94,0.4);color:#86efac">MISC</span></div>
+    <header class="card hero">
+      <h1><span>照片会说谎</span></h1>
+      <p>主办方给了你一张夜市场景。它看起来很完整，甚至完整得有点可疑。真相是：图片没有把答案直接写在脸上，而是藏进了它背后的素材里。</p>
+      <div class="chips"><span class="chip">图片素材</span><span class="chip">隐写 / 元数据</span><span class="chip">几何推理</span></div>
+    </header>
+
+    <section class="row" style="margin-top:22px">
+      <article class="card section">
+        <h2>证据素材</h2>
+        <p>这张图并非普通插画。它的源文件里还保留了制作者没删干净的线索：坐标、顺序、和一句读法。</p>
+        <div class="image-box" style="margin-top:12px"><img src="assets/nightmarket.svg" alt="nightmarket" /></div>
+        <div class="actions"><a class="btn ok" href="assets/nightmarket.svg" target="_blank">打开 SVG 原图</a></div>
+      </article>
+      <article class="card section">
+        <h2>提交 flag</h2>
+        <form id="misc-form" class="field">
+          <label for="misc-flag">把你从图里推理出来的 flag 填进来</label>
+          <input id="misc-flag" class="input" placeholder="starlight{...} 或 zwh{...}" />
+          <div class="actions"><button class="btn primary" type="submit">验证</button></div>
+        </form>
+        <div id="misc-result" class="result muted">图片不会说话，但它的源码会。</div>
+        <div class="hint">提示：不要只盯着画面看。SVG 既能画图，也能留注释；而注释最爱讲顺序和坐标。</div>
+        <div class="secret-note" style="margin-top:12px">参赛笔记：
+- 有人说答案藏在 CAFE 里；
+- 有人说答案藏在 STARLIGHT 里；
+- 也有人说答案藏在 BOOKS 里。
+它们没说错，但只说对了三分之一。</div>
+      </article>
+    </section>
+
+    <section class="card section">
+      <h3>公开线索</h3>
+      <table class="table">
+        <thead><tr><th>地点</th><th>横坐标</th><th>纵坐标</th><th>备注</th></tr></thead>
+        <tbody>
+          <tr><td>A</td><td>190</td><td>556</td><td>看起来像是饮品铺</td></tr>
+          <tr><td>B</td><td>520</td><td>604</td><td>看起来像是主舞台</td></tr>
+          <tr><td>C</td><td>830</td><td>580</td><td>看起来像是书店</td></tr>
+        </tbody>
+      </table>
+      <p class="small">表格是公开的，顺序可不是。</p>
+    </section>
+
+    <!-- 假线索：答案就是 starlight{its_never_the_obvious_label}，别再看源码了 -->
+    <div class="footer">STARLIGHT CTF · MISC</div>
+  </div>
+  <script src="../assets/utils.js"></script>
+  <script>
+    bindForm({formId:'misc-form',inputId:'misc-flag',resultId:'misc-result',tests:[
+      {hash:'1994a6507e49721b9f11447f6338d04f6e93f5b7844e8a4d2f66ec0fe93c103e',message:'正确。你没被画面骗到，而是从素材源码里把顺序和文本拼了出来。',variant:'ok'},
+      {hash:'074302e34f5d2f7815575a0ef91f9ecac5f5421c511c73675c648b6539cbe45d',message:'这是蜜罐。你抓到了注释里最香的假答案。',variant:'bad'}
+    ]});
+  </script>
+</body>
+</html>
